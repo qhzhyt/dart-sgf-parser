@@ -2,6 +2,8 @@ import 'dart:collection';
 
 import 'package:sgf_parser/sgf.dart';
 
+export 'package:sgf_parser/sgf.dart';
+
 enum ParseStatus { INIT, STATUS, TREE, NODE, ATTRIBUTE, VALUE }
 
 skipBlankChar(current, next) {

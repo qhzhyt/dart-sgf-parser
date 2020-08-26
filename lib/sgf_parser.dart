@@ -1,6 +1,6 @@
 library sgf_parser;
 
-import 'package:sgf_parser/parse.dart';
+import 'package:sgf_parser/parser.dart';
 
 //export '';
 /// A Calculator.
