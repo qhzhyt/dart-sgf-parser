@@ -101,6 +101,7 @@ class SGFParser {
           if(current() != ']') {
             throw exception("Expected a ']', but got ${current() == null ? null : "'" + current() + "'"}");
           }
+          skipBlankChar(current, next);
           next();
           skipBlankChar(current, next);
           break;

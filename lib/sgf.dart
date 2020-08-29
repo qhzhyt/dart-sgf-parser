@@ -49,6 +49,11 @@ class SGFNode {
     return null;
   }
 
+  SGFNode.empty() {
+    attributes = Map<String, SGFAttribute>();
+    attributeNameList = List<String>();
+  }
+
   @override
   String toString() {
     String text = ';';
