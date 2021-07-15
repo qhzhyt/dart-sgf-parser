@@ -2,6 +2,8 @@
 
 a sgf file parser, can parse sgf string to a sgf tree object.
 
+sgf格式围棋棋谱解析器
+
 ## dependencies
 ```
 dependencies:
