@@ -7,14 +7,14 @@ class GoSGFTree {
 
   bool isRoot = false;
   static SGFParser parser = SGFParser();
-  SGFTree sgfTree;
-  GoSGFTree(this.sgfTree, {this.isRoot: true}){
+  late SGFTree sgfTree;
+  GoSGFTree(this.sgfTree, {this.isRoot = true}){
     _buildTree();
   }
 
   _buildTree() {}
 
-  GoSGFTree.fromCode(String code, {this.isRoot: true}) {
+  GoSGFTree.fromCode(String code, {this.isRoot = true}) {
     sgfTree = parser.parse(code);
     _buildTree();
   }

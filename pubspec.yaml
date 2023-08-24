@@ -1,11 +1,11 @@
 name: sgf_parser
 description: a sgf file parser, can parse sgf string to a sgf tree object.
-version: 0.0.2
+version: 0.1.0
 author: eason
 homepage:
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=3.0.5 <4.0.0'
 
 dependencies:
   flutter:

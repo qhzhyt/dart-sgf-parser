@@ -31,18 +31,18 @@ class SGFTree {
     return text;
   }
 
-  SGFNode get root => nodeList?.first;
+  SGFNode get root => nodeList.first;
 }
 
 class SGFNode {
-  Map<String, SGFAttribute> attributes;
-  List<String> attributeNameList;
+  late Map<String, SGFAttribute> attributes;
+  late List<String> attributeNameList;
 
   SGFNode(this.attributeNameList, this.attributes);
 
-  SGFAttribute getAttribute(String name) => this[name];
+  SGFAttribute? getAttribute(String name) => this[name];
 
-  SGFAttribute operator [](String name) {
+  SGFAttribute? operator [](String name) {
     if (attributes.containsKey(name)) {
       return attributes[name];
     }
@@ -51,7 +51,7 @@ class SGFNode {
 
   SGFNode.empty() {
     attributes = Map<String, SGFAttribute>();
-    attributeNameList = List<String>();
+    attributeNameList = [];
   }
 
   @override
@@ -70,7 +70,7 @@ class SGFNode {
     String text = ';';
     for (var key in attributeNameList) {
       var value = attributes[key];
-      text += value.toSGF();
+      text += value?.toSGF();
     }
     return text;
   }
@@ -78,7 +78,7 @@ class SGFNode {
 
 class SGFAttribute {
   String name;
-  List<SGFValue> values = List<SGFValue>();
+  List<SGFValue> values = [];
 
   SGFAttribute(this.name);
 
@@ -88,11 +88,11 @@ class SGFAttribute {
     values.add(value);
   }
 
-  String getString() => values.first?.getString();
+  String getString() => values.first.getString();
 
-  int getInt() => values.first?.getInt();
+  int getInt() => values.first.getInt();
 
-  double getFloat() => values.first?.getFloat();
+  double getFloat() => values.first.getFloat();
 
   List<String> getStringList() =>
       values.map((value) => value.getString()).toList();
@@ -100,7 +100,7 @@ class SGFAttribute {
   Map<String, String> getStringMap() {
     Map<String, String> result = Map<String, String>();
     for (var value in values) {
-      if (value.left != null && value.left != null) {
+      if (value.left.isNotEmpty && value.right.isNotEmpty) {
         result[value.left] = value.right;
       }
     }
@@ -135,17 +135,17 @@ class SGFAttribute {
 
 class SGFValue {
   String left;
-  String right;
+  String right = '';
 
-  SGFValue(this.left, {this.right});
+  SGFValue(this.left, {required this.right});
 
   String get value => getString();
 
   String getString() {
-    if (left == null) {
-      return null;
+    if (left.isEmpty) {
+      return '';
     }
-    if (right == null) {
+    if (right.isEmpty) {
       return left;
     }
     return left + ':' + right;
@@ -161,11 +161,11 @@ class SGFValue {
 
   @override
   String toString() {
-    if (left == null) {
+    if (left.isEmpty) {
       return '[]';
     }
 
-    if (right == null) {
+    if (right.isEmpty) {
       return '[' + left + ']';
     }
 
@@ -173,10 +173,10 @@ class SGFValue {
   }
 
   String toSGF() {
-    if (left == null) {
+    if (left.isEmpty) {
       return '[]';
     }
-    if (right == null) {
+    if (right.isEmpty) {
       return '[' + left + ']';
     }
     return '[' + left + ':' + right + ']';
