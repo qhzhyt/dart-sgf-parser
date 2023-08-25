@@ -7,15 +7,15 @@ export 'package:sgf_parser/sgf.dart';
 enum ParseStatus { INIT, STATUS, TREE, NODE, ATTRIBUTE, VALUE }
 
 skipBlankChar(current, next) {
-  while ([' ', '\t', '\n', '\r'].indexOf(current()) > 0) {
+  while ([' ', '\t', '\n', '\r', '\r\n',].indexOf(current()) > 0) {
     next();
   }
 }
 
 class SGFParser {
   SGFTree parseTree(current, next, exception) {
-    List nodeList = List<SGFNode>();
-    List subTreeList = List<SGFTree>();
+    List<SGFNode> nodeList = [];
+    List<SGFTree> subTreeList = [];
 
     skipBlankChar(current, next);
     while (current() != null) {
@@ -75,11 +75,11 @@ class SGFParser {
 
   SGFNode parseNode(current, next, exception) {
     skipBlankChar(current, next);
-    Map attributes = HashMap<String, SGFAttribute>();
+    Map<String, SGFAttribute> attributes = HashMap<String, SGFAttribute>();
 
-    SGFAttribute currentAttribute;
+    SGFAttribute? currentAttribute = null;
 
-    List attributeNameList = List<String>();
+    List<String> attributeNameList = [];
 
     while (current() != null) {
       switch (current()) {
@@ -96,7 +96,7 @@ class SGFParser {
             String rValue = parseValue(current, next, endChars: ']');
             currentAttribute.addValue(SGFValue(lValue, right: rValue));
           } else {
-            currentAttribute.addValue(SGFValue(lValue));
+            currentAttribute.addValue(SGFValue(lValue, right: ''));
           }
           if(current() != ']') {
             throw exception("Expected a ']', but got ${current() == null ? null : "'" + current() + "'"}");
@@ -134,7 +134,7 @@ class SGFParser {
             throw exception("Expected a '[', but got ${current() == null ? null : "'" + current() + "'"}");
           }
           if (attributeNameList.contains(attributeName)) {
-            currentAttribute = attributes[attributeName];
+            currentAttribute = attributes[attributeName]!;
           } else {
             currentAttribute = SGFAttribute(attributeName);
           }
@@ -144,10 +144,10 @@ class SGFParser {
     if(currentAttribute != null) {
       throw exception("Attribute '${currentAttribute.name}' need at least one value");
     }
-    return null;
+    return SGFNode(attributeNameList, attributes);
   }
 
-  String parseValue(current, next, {endChars: '[ '}) {
+  String parseValue(current, next, {endChars = '[ '}) {
     bool escape = false;
     String result = '';
     while (current() != null) {

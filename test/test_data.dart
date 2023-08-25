@@ -1,6 +1,6 @@
 var sgfList = [
   '(;CA[utf8]AB[dn][cn][bm][fq][gq][gp][dp][dq][ep][do]AW[cp][co][dl][cl][bl][ip][dr][eq][er][fr][fp][fo][eo][cq]C[手筋题：黑先]AP[StoneBase:SGFParser.3.0]SZ[19]GM[1]GN[   ]EV[4]HA[0]SO[]MULTIGOGM[1];B[gn];W[fn];B[fm];W[em];B[en]C[right])',
-  '(;AW[pd]AP[MultiGo:4.2.4]SZ[19]GN[     入神图]US[桥本宇太郎解说]SO[《玄玄棋经》]MULTIGOGM[1];B[qf]N[1变];W[qh];B[of];W[oh];B[nd]LB[od:A]C[                      黑5小飞，与“大角势”、“小角势”相同。“玉井栏”、“金井栏”中，黑5在A位碰。];W[oe]LB[ne:A][rd:B][re:C][nc:D]C[“大角势”中，白6从A位跨出。“小角势”中，白B和黑C交换后，于D位托。];B[pe];W[od];B[ne];W[re];B[rf];W[nf]C[白6以下12之断稍微有些无理吧];B[qd];W[qc];B[nc];W[og];B[pf];W[rd];B[rb]C[黑19之点为妙手，到底是局部之要点。](;W[ob];B[oc];W[pc];B[rc];W[qe];B[qb];W[pb];B[nb];W[rg];B[se]C[黑29止，攻杀黑胜。])(;W[qe]N[2变];B[qb];W[pb];B[oc];W[pc];B[rc]C[还原成第1变，黑胜。]))',
+  '''(;AW[pd]AP[MultiGo:4.2.4]SZ[19]GN[     入神图]US[桥本宇太郎解说]SO[《玄玄棋经》]MULTIGOGM[1];B[qf]N[1变];W[qh];B[of];W[oh];B[nd]LB[od:A]C[                      黑5小飞，与“大角势”、“小角势”相同。“玉井栏”、“金井栏”中，黑5在A位碰。];W[oe]LB[ne:A][rd:B][re:C][nc:D]C[“大角势”中，白6从A位跨出。“小角势”中，白B和黑C交换后，于D位托。];B[pe];W[od];B[ne];W[re];B[rf];W[nf]C[白6以下12之断稍微有些无理吧];B[qd];W[qc];B[nc];W[og];B[pf];W[rd];B[rb]C[黑19之点为妙手，到底是局部之要点。](;W[ob];B[oc];W[pc];B[rc];W[qe];B[qb];W[pb];B[nb];W[rg];B[se]C[黑29止，攻杀黑胜。])(;W[qe]N[2变];B[qb];W[pb];B[oc];W[pc];B[rc]C[还原成第1变，黑胜。](;W[bc];B[cc]C[还原])(;W[ac];B[dc]C[黑胜。])))''',
   '(;CA[gb2312]AB[eo][fo][gp][ip][cq][cp][dq][do]AW[dp][ep][fp][dr][co][bo][dn][cm][er]LB[er:1]AP[MultiGo:4.4.4]SZ[19]MULTIGOGM[0];B[eq];W[fq];B[fr];W[gq];B[gr];W[hq];B[hr];W[iq];B[jq];W[ir];B[jr])'
 ];
 
